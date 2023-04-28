@@ -1,4 +1,6 @@
 # LF3DP
+Draw a Closed-Loop Sketch of Dream <br>
+## How To Use
 Hold mouse left button to draw <br>
 Release mouse left button to finish or cancel <br>
 A,D: switch paintor color <br>
@@ -7,6 +9,7 @@ R: reverse the last painting <br>
 C: clear canvas <br>
 H: hide painter <br>
 
+## Gallery
 <div align="center">
   <img src=lf3dp.png alt="lf3dp" style="width:600px;height:auto;">
 </div>
