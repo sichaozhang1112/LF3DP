@@ -221,7 +221,7 @@ class Mouse:
     def get_cross_line(self, radius, angle):
         return LineSegment(Point(radius*math.cos(angle+math.pi), radius*math.sin(angle+math.pi)), Point(radius*math.cos(angle), radius*math.sin(angle)))
 
-class ThreeDPrinting:
+class LowFiThreeDPrinting:
     def __init__(self):
         self.win_width = 480
         self.win_height = 320
@@ -312,4 +312,4 @@ class ThreeDPrinting:
                 self.mouse[i].draw()
                 self.laser[i].draw()
 
-ThreeDPrinting()
+LowFiThreeDPrinting()
