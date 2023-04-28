@@ -1,5 +1,5 @@
-# LF3DP
-[Draw a Closed-Loop Sketch of Dream](https://kitao.github.io/pyxel/wasm/launcher/?run=sichaozhang1112.LF3DP.lf3dp) <br>
+# [LF3DP](https://kitao.github.io/pyxel/wasm/launcher/?run=sichaozhang1112.LF3DP.lf3dp)
+Draw a Closed-Loop Sketch of Dream <br>
 ## How To Use
 Hold mouse left button to draw <br>
 Release mouse left button to finish or cancel <br>
