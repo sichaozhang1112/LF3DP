@@ -8,5 +8,5 @@ C: clear canvas <br>
 H: hide painter <br>
 
 <div align="center">
-  <img src=lf3dp.png alt="lf3dp" style="width:300px;height:auto;">
+  <img src=lf3dp.png alt="lf3dp" style="width:600px;height:auto;">
 </div>
