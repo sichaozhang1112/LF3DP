@@ -46,12 +46,16 @@ class Printer:
     def get_finish_status(self):
         return self.circle_finish
 
+    def get_circle(self):
+        return self.circle
+
     def update(self):
         draw_speed = 0.1
         screen_dist = 100
         to_center = LineSegment(Point(self.circle_center_point.x+self.circle_radius*math.cos(self.circle_angle), self.circle_center_point.y), self.screen_center_point)
         circle_point = to_center.get_point(self.circle_radius*math.sin(self.circle_angle)/screen_dist)
-        self.circle.append(circle_point)
+        if not (circle_point.x < 0 or circle_point.x > pyxel.width or circle_point.y < 0 or circle_point.y > pyxel.height):
+            self.circle.append(circle_point)
         self.laser_point = circle_point
         self.circle_angle += draw_speed
         if self.circle_angle > 2*math.pi:
@@ -62,8 +66,6 @@ class Printer:
         if not self.circle_finish:
             for laser_point in self.laser_points:
                 pyxel.line(laser_point.x, laser_point.y, self.laser_point.x, self.laser_point.y, self.laser_line_color)
-        for point in self.circle:
-            pyxel.pset(point.x, point.y, self.circle_color)
 
 class Painter:
     def __init__(self, color):
@@ -74,6 +76,7 @@ class Painter:
         self.painting_color = color
         self.printing_cnt = 0
         self.printing_finished = False
+        self.final_painting = set()
 
     def get_finish_status(self):
         if len(self.painting) < self.min_painting_num:
@@ -133,6 +136,16 @@ class Painter:
         if not self.printing_finished:
             for point in self.painting:
                 pyxel.pset(point.x, point.y, self.painting_color)
+
+        for printer in self.printers:
+            if printer.get_finish_status():
+                continue
+            circle = printer.get_circle()
+            for point in circle:
+                self.final_painting.add(point)
+
+        for point in self.final_painting:
+            pyxel.pset(point.x, point.y, self.painting_color)
 
         for printer in self.printers:
             printer.draw()
@@ -221,7 +234,7 @@ class Mouse:
     def get_cross_line(self, radius, angle):
         return LineSegment(Point(radius*math.cos(angle+math.pi), radius*math.sin(angle+math.pi)), Point(radius*math.cos(angle), radius*math.sin(angle)))
 
-class LowFiThreeDPrinting:
+class LowFiThreeDPrinter:
     def __init__(self):
         self.win_width = 480
         self.win_height = 320
@@ -312,4 +325,4 @@ class LowFiThreeDPrinting:
                 self.mouse[i].draw()
                 self.laser[i].draw()
 
-LowFiThreeDPrinting()
+LowFiThreeDPrinter()
