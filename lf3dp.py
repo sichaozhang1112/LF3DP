@@ -225,7 +225,7 @@ class LowFiThreeDPrinting:
     def __init__(self):
         self.win_width = 480
         self.win_height = 320
-        pyxel.init(self.win_width, self.win_height, title="3D Printing")
+        pyxel.init(self.win_width, self.win_height, title="Low-Fi 3D Printer")
         self.screen_color = 0
 
         # mouse and laser
